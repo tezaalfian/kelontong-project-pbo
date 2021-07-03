@@ -28,6 +28,14 @@ public class AdminForm extends javax.swing.JFrame {
      */
     public AdminForm() {
         initComponents();
+        dataTable();
+    }
+    
+    public void setPanel(String str){
+        this.panelActive = str;
+    }
+    
+    public void dataTable(){
         if(panelActive == "USERS"){
             tampil_users();
         }else if(panelActive == "BARANG"){
@@ -37,6 +45,7 @@ public class AdminForm extends javax.swing.JFrame {
         }else if(panelActive == "PENJUALAN"){
             tampil_transaksi("JUAL");
         }
+        lbl_title.setText(panelActive);
     }
     
     public void table_transaksi(){
@@ -68,7 +77,7 @@ public class AdminForm extends javax.swing.JFrame {
         table_transaksi();
     }
     public void cari_transaksi(String str,String jenis){
-        hasil = trxModel.cariData(str);
+        hasil = trxModel.cariData(str,jenis);
         table_transaksi();
     }
 //    Barang
@@ -180,6 +189,14 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 144, -1));
 
         lbl_penjualan.setBackground(new java.awt.Color(143, 192, 247));
+        lbl_penjualan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_penjualanMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbl_penjualanMousePressed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kelontongid/image/transaksi.png"))); // NOI18N
 
@@ -234,6 +251,14 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel1.add(lbl_pembelian, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 145, 40));
 
         lbl_barang.setBackground(new java.awt.Color(143, 192, 247));
+        lbl_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_barangMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbl_barangMousePressed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kelontongid/image/path2.png"))); // NOI18N
 
@@ -261,6 +286,14 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel1.add(lbl_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 189, 145, 40));
 
         lbl_users.setBackground(new java.awt.Color(143, 192, 247));
+        lbl_users.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_usersMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbl_usersMousePressed(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kelontongid/image/g4584.png"))); // NOI18N
 
@@ -459,6 +492,10 @@ public class AdminForm extends javax.swing.JFrame {
         }else{
             if(panelActive == "USERS"){
                 cari_user(txt_cari.getText());
+            }else if(panelActive == "BARANG"){
+                cari_barang(txt_cari.getText());
+            }else if(panelActive == "PENJUALAN"){
+                cari_transaksi(txt_cari.getText(), "JUAL");
             }
         }
     }//GEN-LAST:event_btn_cariActionPerformed
@@ -468,6 +505,10 @@ public class AdminForm extends javax.swing.JFrame {
         txt_cari.setText("");
         if(panelActive == "USERS"){
             tampil_users();
+        }else if(panelActive == "BARANG"){
+            tampil_barang();
+        }else if(panelActive == "PENJUALAN"){
+            tampil_transaksi("JUAL");
         }
     }//GEN-LAST:event_btn_allActionPerformed
 
@@ -518,6 +559,36 @@ public class AdminForm extends javax.swing.JFrame {
         login.Logout(Session.getUserId());
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lbl_penjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_penjualanMouseClicked
+
+    }//GEN-LAST:event_lbl_penjualanMouseClicked
+
+    private void lbl_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_barangMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lbl_barangMouseClicked
+
+    private void lbl_usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usersMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lbl_usersMouseClicked
+
+    private void lbl_usersMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_usersMousePressed
+        // TODO add your handling code here:
+        panelActive = "USERS";
+        dataTable();
+    }//GEN-LAST:event_lbl_usersMousePressed
+
+    private void lbl_barangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_barangMousePressed
+        panelActive = "BARANG";
+        dataTable();
+    }//GEN-LAST:event_lbl_barangMousePressed
+
+    private void lbl_penjualanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_penjualanMousePressed
+        panelActive = "PENJUALAN";
+        dataTable();
+    }//GEN-LAST:event_lbl_penjualanMousePressed
 
     /**
      * @param args the command line arguments

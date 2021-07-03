@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class CrudTransaksi extends app.CRUD{
     public CrudTransaksi(){
         this.table = "transaksi";
-        this.field.add("jenis");
+//        this.field.add("jenis");
         this.field.add("barang.nama_barang");
         this.field.add("users.nama");
     }
@@ -30,7 +30,7 @@ public class CrudTransaksi extends app.CRUD{
         return CRUDhasil;
     }
     public ResultSet cariData(String str, String jenis) {
-        CRUDquery = "SELECT transaksi.*,barang.nama_barang,users.nama from transaksi JOIN barang ON barang.id = transaksi.barang_id JOIN users ON users.id = transaksi.created_by WHERE jenis in('"+jenis+"') {where}";
+        CRUDquery = "SELECT transaksi.*,barang.nama_barang,users.nama from transaksi JOIN barang ON barang.id = transaksi.barang_id JOIN users ON users.id = transaksi.created_by WHERE jenis in('"+jenis+"') AND {where}";
         String strVal = "";
         for(int i=0; i<field.size(); i++){
             strVal += field.get(i) + " LIKE '%" + str + "%'";

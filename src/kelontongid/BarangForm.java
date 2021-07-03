@@ -48,7 +48,8 @@ public class BarangForm extends javax.swing.JFrame {
     private void exitForm(){
         barangId = "";
         dispose();
-        admin.tampil_barang();
+        admin.setPanel("BARANG");
+        admin.dataTable();
         admin.setVisible(true);
     }
     /**

@@ -86,7 +86,8 @@ public class PenjualanForm extends javax.swing.JFrame {
     
     private void exitForm(){
         dispose();
-        admin.tampil_transaksi("JUAL");
+        admin.setPanel("PENJUALAN");
+        admin.dataTable();
         admin.setVisible(true);
     }
     

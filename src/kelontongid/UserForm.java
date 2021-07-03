@@ -49,7 +49,8 @@ public class UserForm extends javax.swing.JFrame {
     private void exitForm(){
         UserId = "";
         dispose();
-        admin.tampil_users();
+        admin.setPanel("USERS");
+        admin.dataTable();
         admin.setVisible(true);
     }
     /**
